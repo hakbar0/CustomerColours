@@ -9,4 +9,4 @@ function postToDb(firstName, surname, telephone, DOB) {
   });
 };
 
-module.exports = { ostToDb };
+module.exports = { postToDb };
