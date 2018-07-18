@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
+
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Home from './components/Home';
+import Sidebar from './components/Sidebar';
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <BrowserRouter>
+        <div className="app">
+          <Sidebar />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route component = {this.NoMatch} />
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
+  NoMatch = () => (
+    <div className="container">
+      <h3 className='four-zero-four jumbotron'>404 page not found</h3>
+    </div>
+  )
 }
 
 export default App;
