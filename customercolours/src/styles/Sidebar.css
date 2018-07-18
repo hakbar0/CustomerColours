@@ -7,9 +7,17 @@
   left: 0;
   background-color: #111;
   overflow-x: hidden;
-  padding-top: 100px;
+  padding-top: 150px;
   width: 200px;
   font-size: 20px;
+}
+
+.horizontal{
+  z-index: 2;
+  height: 150px;
+  width: 100%;
+  margin-left: 200px;
+  background: rgb(61, 54, 54);
 }
 
 .navbar nav{
