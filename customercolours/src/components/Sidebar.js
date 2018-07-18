@@ -4,10 +4,11 @@ import '../styles/Sidebar.css';
 
 const Sidebar = () => {
   return(
-    <div>
+    <div className = "navbar">
       <nav>
-        <NavLink exact to = '/'>Home</NavLink>
-      </nav>
+        <NavLink exact to = '/' style={{ textDecoration: 'none' }}><h2>Home</h2></NavLink>
+        <NavLink exact to = '/customers' style={{ textDecoration: 'none' }}><h2>Customers</h2></NavLink>
+        </nav>
       </div>
   )
 }
