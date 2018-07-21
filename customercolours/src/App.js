@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Sidebar from './components/Sidebar';
 import Settings from './components/Settings';
 import Customers from './components/Customers';
+import Create from './components/Create';
 
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/customers' component={Customers} />
+            <Route exact path='/create' component={Create} />
             <Route exact path='/settings' component={Settings} />
             <Route component = {this.NoMatch} />
           </Switch>

@@ -45,7 +45,7 @@ class Customers extends React.Component {
             </tr>
             {
               this.state.customers &&
-              Object.entries(this.state.customers).map((customer) => {
+              Object.entries(this.state.customers).reverse().map((customer) => {
                 return (
 
                   <tr className="customer" key={customer[0]}
@@ -75,6 +75,7 @@ class Customers extends React.Component {
             <h1>DOB: {this.state.dob}</h1>
             <h1>Number: {this.state.number}</h1>
             <button onClick={() => this.flag(true)} >Go To Update</button>
+            <button onClick={() => this.deleteUser()} >Delete</button>
             </div>
             :
             <div className ="form-content">
@@ -96,7 +97,6 @@ class Customers extends React.Component {
 
             <button onClick={() => this.editUser()} >Update</button>
 
-            <button onClick={() => this.deleteUser()} >Delete</button>
             </div>
             }
           </div>
