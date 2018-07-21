@@ -9,6 +9,7 @@ const Sidebar = () => {
       <nav>
         <NavLink exact to = '/' style={{ textDecoration: 'none' }}><h2>Home</h2></NavLink>
         <NavLink exact to = '/customers' style={{ textDecoration: 'none' }}><h2>Customers</h2></NavLink>
+        <NavLink exact to = '/settings' style={{ textDecoration: 'none' }}><h2>Settings</h2></NavLink>
         </nav>
       </div>
      <div className = "horizontal"></div>

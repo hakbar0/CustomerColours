@@ -4,6 +4,7 @@ import './styles/App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import Sidebar from './components/Sidebar';
+import Settings from './components/Settings';
 
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
           <Sidebar />
           <Switch>
             <Route exact path='/' component={Home} />
+            <Route exact path='/settings' component={Settings} />
             <Route component = {this.NoMatch} />
           </Switch>
         </div>
@@ -21,8 +23,8 @@ class App extends Component {
     );
   }
   NoMatch = () => (
-    <div className="container">
-      <h3 className='four-zero-four jumbotron'>404 page not found</h3>
+    <div>
+      <h3>404 page not found</h3>
     </div>
   )
 }

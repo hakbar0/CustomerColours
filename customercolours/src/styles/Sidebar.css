@@ -13,7 +13,10 @@
 }
 
 .horizontal{
-  z-index: 2;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 1;
   height: 150px;
   width: 100%;
   margin-left: 200px;
