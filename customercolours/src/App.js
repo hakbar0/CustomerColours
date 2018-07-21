@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import Sidebar from './components/Sidebar';
 import Settings from './components/Settings';
+import Customers from './components/Customers';
 
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
           <Sidebar />
           <Switch>
             <Route exact path='/' component={Home} />
+            <Route exact path='/customers' component={Customers} />
             <Route exact path='/settings' component={Settings} />
             <Route component = {this.NoMatch} />
           </Switch>
