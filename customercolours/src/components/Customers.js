@@ -23,9 +23,12 @@ class Customers extends React.Component {
     this.hide("block");
   };
 
-  hide = (style) => { this.setState({ style }) };
-
   flag = (update) => {this.setState({update})}
+
+  hide = (style) => { 
+    this.setState({ style }) 
+    this.flag(false);
+  }
 
   componentDidMount() { this.getAllUsers(); };
 
@@ -87,11 +90,13 @@ class Customers extends React.Component {
             <input type="text" className="form-control" id="form-dob" placeholder={this.state.dob} required />
 
             <label for="form-number"><h5 className='form-number'>Number</h5></label>
-            <input type="text" className="form-control" id="form-number" placeholder={this.state.number} required />
+            <input type="text" className="form-control" id="form-number" value={this.state.number} required />
 
             <button onClick={() => this.flag(false)} >View Details</button>
-            {/* Placeholder for delete */}
+
             <button onClick={() => this.editUser()} >Update</button>
+
+            <button onClick={() => this.deleteUser()} >Delete</button>
             </div>
             }
           </div>
@@ -101,13 +106,20 @@ class Customers extends React.Component {
     )
   }
 
+  deleteUser = () => {
+    let id = this.state.currentId;
+    db.ref(`/customers/${id}`).once('value', res => { db.ref(`/customers/${id}`).remove(); })
+    this.hide("none");
+  }
+
   editUser = () => {
     db.ref(`customers/${this.state.currentId}`).update({ 
-      DOB: document.getElementById('form-dob').value,
-      firstname: document.getElementById('form-firstname').value,
-      surname: document.getElementById('form-lastname').value,
-      telephone:  document.getElementById('form-number').value 
+      DOB: document.getElementById('form-dob').value || this.state.dob,
+      firstname: document.getElementById('form-firstname').value || this.state.firstname,
+      surname: document.getElementById('form-lastname').value || this.state.lastname,
+      telephone:  document.getElementById('form-number').value || this.state.number
    });
+   this.hide("none");
   }
 };
 
