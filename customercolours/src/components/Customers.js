@@ -19,8 +19,8 @@ class Customers extends React.Component {
 
   getAllUsers = () => { db.ref("/customers").on("value", res => { this.setState({ customers: res.val() }); }) };
 
-  currentId = (currentId, firstname, lastname, dob, number) => { 
-    this.setState({ currentId, firstname, lastname, dob, number }); 
+  currentId = (currentId, firstname, lastname, dob, number, background) => { 
+    this.setState({ currentId, firstname, lastname, dob, number, background }); 
     this.hide("block");
   };
 
@@ -51,7 +51,9 @@ class Customers extends React.Component {
                   <tr className="customer" key={customer[0]} style={{ background: this.colorChange(customer[1].firstname) }}
                     onClick={this.currentId.bind(this, customer[0], customer[1].firstname,
                       customer[1].surname, customer[1].DOB,
-                      customer[1].telephone)}>
+                      customer[1].telephone, 
+                      this.colorChange(customer[1].firstname)
+                    )}>
 
                     <td>{customer[1].firstname}</td>
                     <td>{customer[1].surname}</td>
@@ -65,8 +67,8 @@ class Customers extends React.Component {
           </tbody>
         </table>
 
-        <div id="myModal" className={`modal`} style={{ display: this.state.style }}>
-          <div className={`modal-content`}>
+        <div id="myModal" className={`modal`} style={{ display: this.state.style}}>
+          <div className={`modal-content`} style={{background: this.state.background}}>
             <span className={`close`} onClick={this.hide.bind(null, "none")} >&times;</span>
             {!this.state.update ?
             <div className ="content">
@@ -109,8 +111,8 @@ class Customers extends React.Component {
   colorChange= (name) => {
     let nameCount = 0;
     for(let i =0; i < name.length; i++){nameCount += name.charCodeAt(i);}
-    if(nameCount > 255) nameCount = nameCount%146;
-    let css= ["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque",,"BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenRod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","Darkorange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","GoldenRod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenRodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenRod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"];
+    if(nameCount > 255) nameCount = nameCount%147;
+    let css= ["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenRod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","Darkorange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","GoldenRod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenRodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenRod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"];
     return css[nameCount];
   }
 
