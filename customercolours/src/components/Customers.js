@@ -91,7 +91,7 @@ class Customers extends React.Component {
 
             <button onClick={() => this.flag(false)} >View Details</button>
             {/* Placeholder for delete */}
-            <button onClick={() => this.flag(false)} >Delete</button>
+            <button onClick={() => this.editUser()} >Update</button>
             </div>
             }
           </div>
@@ -99,6 +99,15 @@ class Customers extends React.Component {
 
       </div>
     )
+  }
+
+  editUser = () => {
+    db.ref(`customers/${this.state.currentId}`).update({ 
+      DOB: document.getElementById('form-dob').value,
+      firstname: document.getElementById('form-firstname').value,
+      surname: document.getElementById('form-lastname').value,
+      telephone:  document.getElementById('form-number').value 
+   });
   }
 };
 
