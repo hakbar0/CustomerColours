@@ -54,3 +54,32 @@ td, th {
   text-decoration: none;
   cursor: pointer;
 }
+
+.btn{
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display:block;
+  position:relative;
+  background-color: #fcad26;
+  font-size: 16px;
+  font-weight: 300px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 25px 80px;
+  margin: 0 auto;
+  border-radius: 20px;
+  box-shadow: 0px 6px #efa424;
+  width: 25%;
+}
+
+#btn1{
+  background-color: rgb(0,192,0);
+  box-shadow: 0px 6px rgb(0,184,0);
+}
+
+#btn2{
+  background-color: rgb(255,0,0);
+  box-shadow: 0px 6px rgb(240,0,0);
+}

@@ -7,7 +7,7 @@ class Settings extends React.Component {
   render() {
     return (
       <div className="settings">
-        <button className="btn" onClick={() => { postRandomUsers()}}>Post to database</button>
+        <button className="btn" onClick={() => { postRandomUsers()}}>Seed database with random data</button>
       </div>
     )
   }

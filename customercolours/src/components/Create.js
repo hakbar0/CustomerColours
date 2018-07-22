@@ -26,7 +26,7 @@ class Create extends React.Component {
       <div className='container'>
         <form onSubmit={() => this.createUser()}>
           <div className='form-group'>
-            <h2 className='story-title'>Create a user</h2>
+            <h3 className='story-title'>Create a user</h3>
 
             <label for="form-firstname"><h5 className="form-firstname">First Name</h5></label>
             <input type="text" className="form-control" id="form-firstname" placeholder="Lee" required />

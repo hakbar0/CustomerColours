@@ -19,15 +19,15 @@ class Customers extends React.Component {
 
   getAllUsers = () => { db.ref("/customers").on("value", res => { this.setState({ customers: res.val() }); }) };
 
-  currentId = (currentId, firstname, lastname, dob, number, background) => { 
-    this.setState({ currentId, firstname, lastname, dob, number, background }); 
+  currentId = (currentId, firstname, lastname, dob, number, background) => {
+    this.setState({ currentId, firstname, lastname, dob, number, background });
     this.hide("block");
   };
 
-  flag = (update) => {this.setState({update})}
+  flag = (update) => { this.setState({ update }) }
 
-  hide = (style) => { 
-    this.setState({ style }) 
+  hide = (style) => {
+    this.setState({ style })
     this.flag(false);
   }
 
@@ -51,7 +51,7 @@ class Customers extends React.Component {
                   <tr className="customer" key={customer[0]} style={{ background: this.colorChange(customer[1].firstname) }}
                     onClick={this.currentId.bind(this, customer[0], customer[1].firstname,
                       customer[1].surname, customer[1].DOB,
-                      customer[1].telephone, 
+                      customer[1].telephone,
                       this.colorChange(customer[1].firstname)
                     )}>
 
@@ -67,39 +67,39 @@ class Customers extends React.Component {
           </tbody>
         </table>
 
-        <div id="myModal" className={`modal`} style={{ display: this.state.style}}>
-          <div className={`modal-content`} style={{background: this.state.background}}>
+        <div id="myModal" className={`modal`} style={{ display: this.state.style }}>
+          <div className={`modal-content`} style={{ background: this.state.background }}>
             <span className={`close`} onClick={this.hide.bind(null, "none")} >&times;</span>
             {!this.state.update ?
-            <div className ="content">
-            <h1>Name: {this.state.firstname}</h1>
-            <h1>Last Name: {this.state.lastname}</h1>
-            <h1>DOB: {this.state.dob}</h1>
-            <h1>Number: {this.state.number}</h1>
-            <button onClick={() => this.flag(true)} >Go To Update</button>
-            <button onClick={() => this.deleteUser()} >Delete</button>
-            </div>
-            :
-            <div className ="form-content">
-            <label for="form-title"><h5 className="form-title">Edit customer details</h5></label>
+              <div className="content">
+                <h1>Name: {this.state.firstname}</h1>
+                <h1>Last Name: {this.state.lastname}</h1>
+                <h1>DOB: {this.state.dob}</h1>
+                <h1>Number: {this.state.number}</h1>
+                <button className="btn" id="btn1" onClick={() => this.flag(true)} >Go To Update</button>
+                <button className="btn" id="btn2" onClick={() => this.deleteUser()} >Delete</button>
+              </div>
+              :
+              <div className="form-content">
+                <label for="form-title"><h5 className="form-title">Edit customer details</h5></label>
 
-            <label for="form-firstname"><h5 className="form-firstname">First Name</h5></label>
-            <input type="text" className="form-control" id="form-firstname" placeholder = {this.state.firstname} required />
+                <label for="form-firstname"><h5 className="form-firstname">First Name</h5></label>
+                <input type="text" className="form-control" id="form-firstname" placeholder={this.state.firstname} required />
 
-            <label for="form-lastname"><h5 className='form-lastname'>Last Name</h5></label>
-            <input type="text" className="form-control" id="form-lastname" placeholder={this.state.lastname} required />
+                <label for="form-lastname"><h5 className='form-lastname'>Last Name</h5></label>
+                <input type="text" className="form-control" id="form-lastname" placeholder={this.state.lastname} required />
 
-            <label for="form-dob"><h5 className='form-dob'>dob</h5></label>
-            <input type="text" className="form-control" id="form-dob" placeholder={this.state.dob} required />
+                <label for="form-dob"><h5 className='form-dob'>dob</h5></label>
+                <input type="text" className="form-control" id="form-dob" placeholder={this.state.dob} required />
 
-            <label for="form-number"><h5 className='form-number'>Number</h5></label>
-            <input type="text" className="form-control" id="form-number" value={this.state.number} required />
+                <label for="form-number"><h5 className='form-number'>Number</h5></label>
+                <input type="text" className="form-control" id="form-number" value={this.state.number} required />
 
-            <button onClick={() => this.flag(false)} >View Details</button>
+                <button className="btn" onClick={() => this.flag(false)} >View Details</button>
 
-            <button onClick={() => this.editUser()} >Update</button>
+                <button className="btn" id = "btn1" onClick={() => this.editUser()} >Update</button>
 
-            </div>
+              </div>
             }
           </div>
         </div>
@@ -108,11 +108,11 @@ class Customers extends React.Component {
     )
   }
 
-  colorChange= (name) => {
+  colorChange = (name) => {
     let nameCount = 0;
-    for(let i =0; i < name.length; i++){nameCount += name.charCodeAt(i);}
-    if(nameCount > 255) nameCount = nameCount%147;
-    let css= ["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenRod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","Darkorange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","GoldenRod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenRodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenRod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"];
+    for (let i = 0; i < name.length; i++) { nameCount += name.charCodeAt(i); }
+    if (nameCount > 255) nameCount = nameCount % 147;
+    let css = ["AliceBlue", "AntiqueWhite", "Aqua", "Aquamarine", "Azure", "Beige", "Bisque", "Black", "BlanchedAlmond", "Blue", "BlueViolet", "Brown", "BurlyWood", "CadetBlue", "Chartreuse", "Chocolate", "Coral", "CornflowerBlue", "Cornsilk", "Crimson", "Cyan", "DarkBlue", "DarkCyan", "DarkGoldenRod", "DarkGray", "DarkGrey", "DarkGreen", "DarkKhaki", "DarkMagenta", "DarkOliveGreen", "Darkorange", "DarkOrchid", "DarkRed", "DarkSalmon", "DarkSeaGreen", "DarkSlateBlue", "DarkSlateGray", "DarkSlateGrey", "DarkTurquoise", "DarkViolet", "DeepPink", "DeepSkyBlue", "DimGray", "DimGrey", "DodgerBlue", "FireBrick", "FloralWhite", "ForestGreen", "Fuchsia", "Gainsboro", "GhostWhite", "Gold", "GoldenRod", "Gray", "Grey", "Green", "GreenYellow", "HoneyDew", "HotPink", "IndianRed", "Indigo", "Ivory", "Khaki", "Lavender", "LavenderBlush", "LawnGreen", "LemonChiffon", "LightBlue", "LightCoral", "LightCyan", "LightGoldenRodYellow", "LightGray", "LightGrey", "LightGreen", "LightPink", "LightSalmon", "LightSeaGreen", "LightSkyBlue", "LightSlateGray", "LightSlateGrey", "LightSteelBlue", "LightYellow", "Lime", "LimeGreen", "Linen", "Magenta", "Maroon", "MediumAquaMarine", "MediumBlue", "MediumOrchid", "MediumPurple", "MediumSeaGreen", "MediumSlateBlue", "MediumSpringGreen", "MediumTurquoise", "MediumVioletRed", "MidnightBlue", "MintCream", "MistyRose", "Moccasin", "NavajoWhite", "Navy", "OldLace", "Olive", "OliveDrab", "Orange", "OrangeRed", "Orchid", "PaleGoldenRod", "PaleGreen", "PaleTurquoise", "PaleVioletRed", "PapayaWhip", "PeachPuff", "Peru", "Pink", "Plum", "PowderBlue", "Purple", "Red", "RosyBrown", "RoyalBlue", "SaddleBrown", "Salmon", "SandyBrown", "SeaGreen", "SeaShell", "Sienna", "Silver", "SkyBlue", "SlateBlue", "SlateGray", "SlateGrey", "Snow", "SpringGreen", "SteelBlue", "Tan", "Teal", "Thistle", "Tomato", "Turquoise", "Violet", "Wheat", "White", "WhiteSmoke", "Yellow", "YellowGreen"];
     return css[nameCount];
   }
 
@@ -123,13 +123,13 @@ class Customers extends React.Component {
   }
 
   editUser = () => {
-    db.ref(`customers/${this.state.currentId}`).update({ 
+    db.ref(`customers/${this.state.currentId}`).update({
       DOB: document.getElementById('form-dob').value || this.state.dob,
       firstname: document.getElementById('form-firstname').value || this.state.firstname,
       surname: document.getElementById('form-lastname').value || this.state.lastname,
-      telephone:  document.getElementById('form-number').value || this.state.number
-   });
-   this.hide("none");
+      telephone: document.getElementById('form-number').value || this.state.number
+    });
+    this.hide("none");
   }
 };
 
